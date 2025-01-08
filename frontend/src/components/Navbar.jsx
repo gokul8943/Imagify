@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
-import {Link,useNavigate} from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import polo from '../assets/polo1.png'
+
 const Navbar = () => {
 
   const [user, setUser] = useState(true)
   const navigate = useNavigate()
 
-  const handleMove = () =>{
+  const handleMove = () => {
     navigate('/buy')
   }
   return (
@@ -20,9 +22,9 @@ const Navbar = () => {
               <p className='text-xsd sm:text-sm font-medium text-gray-600'>Credit left :50</p>
             </button>
             <p className='text-gray-600 max-sm:hidden pl-4 '>Gouri</p>
-            <div>
-              <img src="" alt="profile" className='w-10 drop-shadow'/>
-              <div className='absoulte hidden group-hover:block top-0 right-0 z-10 text-black pt-12'>
+            <div className='relative group'>
+              <img src={polo} alt="profile" className='w-10 drop-shadow' />
+              <div className='absolute hidden group-hover:block top-0 right-0 z-10 text-black rounded pt-12'>
                 <ul className='list-none m-0 p-2 bg-white rounded-md border text-sm'>
                   <li className='py-1 px-2 cursor-pointer pr-10'>Logout</li>
                 </ul>
