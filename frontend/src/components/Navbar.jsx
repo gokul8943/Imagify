@@ -4,7 +4,7 @@ import polo from '../assets/polo1.png'
 
 const Navbar = () => {
 
-  const [user, setUser] = useState(true)
+  const [user, setUser] = useState(null)
   const navigate = useNavigate()
 
   const handleMove = () => {
