@@ -12,8 +12,9 @@ const Navbar = () => {
   }
   return (
     <div className='flex item-center justify-between py-4'>
-      <Link to='/'>
-        <img src="" alt="imagify" className='w-28 sm:w-32 lg:w-40' />
+      <Link to='/' className='flex gap-0'>
+        <p className='text-orange-600 drop-shadow-lg font-bold'>IMA</p>
+        <p className='text-blue-500 drop-shadow-md font-bold'>GIFY</p>
       </Link>
       <div>
         {user ?
