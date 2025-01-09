@@ -21,7 +21,7 @@ const Result = () => {
   }
   
   return (
-    <form onSubmit={onSubmitHandler} className='flex flex-col min-h-[90vh] justify-center item-center'>
+    <form onSubmit={onSubmitHandler} className='flex flex-col min-h-[90vh] justify-center items-center'>
       <div>
         <div className='relative'>
           <img src={image} alt="" className='max-w-sm rounded' />
