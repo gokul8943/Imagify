@@ -33,8 +33,8 @@ const Navbar = () => {
             </div>
           </div> :
           <div className='flex item-center gap-2 sm:gap-5'>
-            <p onClick={handleMove} className='cursor-pointer'>Pricing</p>
-            <button className='bg-zinc-800 text-white px-7 py-2 sm:px-10 text-sm rounded-full'>Login</button>
+            <button onClick={handleMove} className='border border-blue-500 bg-white text-gray-600 px-7 py-2 sm:px-10 text-sm font-semibold rounded-full'>Pricing</button>
+            <button className='bg-zinc-800 text-white px-7 py-2 sm:px-10 text-sm font-semibold rounded-full'>Login</button>
           </div>
         }
 
