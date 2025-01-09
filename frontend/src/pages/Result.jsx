@@ -12,8 +12,8 @@ const Result = () => {
     setIsImageLoaded(false)
   }
 
-  const handleInput = () =>{
-    e => setInput(e.target.value)
+  const handleInput = (e) =>{
+     setInput(e.target.value)
   }
 
   const onSubmitHandler = async (e) =>{
