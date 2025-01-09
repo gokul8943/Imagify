@@ -13,8 +13,7 @@ const Navbar = () => {
   return (
     <div className='flex item-center justify-between py-4'>
       <Link to='/' className='flex gap-0'>
-        <p className='text-orange-600 drop-shadow-lg font-bold'>IMA</p>
-        <p className='text-blue-500 drop-shadow-md font-bold'>GIFY</p>
+        <p className='text-orange-600 drop-shadow-lg font-bold'>IMA<span className='text-blue-500'>GIFY </span></p>
       </Link>
       <div>
         {user ?
