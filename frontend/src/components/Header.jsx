@@ -21,13 +21,21 @@ const Header = () => {
         <p>Best text to image generator</p>
       </div>
       <motion.h1
-      initial={{opacity:0, scale:0, transition :{duration:0}}}
-       animate={{ opacity:1, scale: 1, transition: { duration: 3 }
-      }} 
+       initial={{ opacity: 0, scale: 0.8 }}
+       animate={{ opacity: 1, scale: 1 }}
+       transition={{
+         duration: 2,
+        //  repeat: Infinity,
+         repeatType: "mirror",
+         delay: Math.random() * 2, 
+       }}
       
       className='text-4xl font-semibold max-w-[300px] sm:text-7xl sm:max-w-[590px] mx-auto mt-10 text-center drop-shadow-md'>Turn text to <span className='text-blue-500'>image</span>,in seconds</motion.h1>
       <p className='text-center max-w-xl mx-auto mt-5'>Unleash your creativity  with AI. Turn your imagination into visual art in seconds just type, and watch the magic happen.</p>
-      <button onClick={handleMove} className='sm:text-lg text-white bg-black w-auto mt-8 px-12 py-2.5 flex item-center gap-2 rounded-full'>Generate Images</button>
+      <motion.button 
+       whileHover={{ scale: 1.1 }}
+       whileTap={{ scale: 0.95 }}
+      onClick={handleMove} className='sm:text-lg text-white bg-black w-auto mt-8 px-12 py-2.5 flex item-center gap-2 rounded-full'>Generate Images</motion.button>
         <div className='flex flex-wrap justify-center mt-16 gap-3'>
           {Array(6).fill('').map((item,index) =>(
             <img className='rounded hover:scale-105 transition-all duration-300 cursor-pointer max-sm:w-10'
