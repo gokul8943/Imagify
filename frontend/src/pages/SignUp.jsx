@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 const SignUp = () => {
   const [formData, setFormData] = useState({ name: '', email: '', password: '' });
   const [showPassword, setShowPassword] = useState(false);
-   
+
   const navigate = useNavigate()
 
   const handleChange = (e) => {

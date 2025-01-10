@@ -6,34 +6,34 @@ const Result = () => {
   const [image, setImage] = useState(img)
   const [isImageLoaded, setIsImageLoaded] = useState(false)
   const [loading, setLoading] = useState(false)
-  const [input,setInput ] = useState('')
+  const [input, setInput] = useState('')
 
   const generateAnother = () => {
     setIsImageLoaded(false)
   }
 
-  const handleInput = (e) =>{
-     setInput(e.target.value)
+  const handleInput = (e) => {
+    setInput(e.target.value)
   }
 
-  const onSubmitHandler = async (e) =>{
-    
+  const onSubmitHandler = async (e) => {
+
   }
-  
+
   return (
     <form onSubmit={onSubmitHandler} className='flex flex-col min-h-[90vh] justify-center items-center'>
       <div>
         <div className='relative'>
           <img src={image} alt="" className='max-w-sm rounded' />
-          <span className={`absolute bottom-0 left-0 h-1 bg-blue-500 ${loading ? ' w-full transitio-all duration-[10s]':'w-0'}`}></span>
+          <span className={`absolute bottom-0 left-0 h-1 bg-blue-500 ${loading ? ' w-full transitio-all duration-[10s]' : 'w-0'}`}></span>
         </div>
         <p className={!loading ? 'hidden' : ''}>Loading...</p>
       </div>
       {!isImageLoaded &&
         <div className='flex w-full max-w-xl bg-neutral-500 text-white tetx-sm p=0.5 mt-10 rounded-full'>
           <input
-          onChange={handleInput} value={input} 
-          type="text" placeholder='decribe what you want to generate' className='flex-1 bg-transparent outline-none ml-8 max-sm:w-20' />
+            onChange={handleInput} value={input}
+            type="text" placeholder='decribe what you want to generate' className='flex-1 bg-transparent outline-none ml-8 max-sm:w-20' />
           <button type='submit' className='bg-zinc-900 px-10 sm:px-16 py-3 rounded-full placeholder-color'>Generate</button>
         </div>
       }

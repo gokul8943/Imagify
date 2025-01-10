@@ -121,7 +121,7 @@ const Login = () => {
         <div className="mt-6 text-center">
           <p className="text-sm text-gray-600">
             Don&apos;t have an account?{' '}
-            <p onClick={ navigate('/register' )} className="cursor-pointer font-medium text-blue-600 hover:text-blue-500">
+            <p onClick={navigate('/register')} className="cursor-pointer font-medium text-blue-600 hover:text-blue-500">
               Sign up
             </p>
           </p>

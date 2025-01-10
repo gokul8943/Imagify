@@ -8,10 +8,10 @@ import GenerateButton from '../components/GenerateButton'
 const Home = () => {
   return (
     <div>
-     <Header />
-     <Step />
-     <Description />
-    <GenerateButton />
+      <Header />
+      <Step />
+      <Description />
+      <GenerateButton />
     </div>
   )
 }
