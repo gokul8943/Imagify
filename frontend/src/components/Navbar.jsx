@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import polo from '../assets/polo1.png'
+import { AppContext } from '../context/AppContext'
 
 const Navbar = () => {
 
-  const [user, setUser] = useState(null)
+const { user } = useContext(AppContext) 
+
   const navigate = useNavigate()
 
   const handleMove = () => {
