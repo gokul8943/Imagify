@@ -1,15 +1,22 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import cat from '../assets/cat.png'
 import { useNavigate } from 'react-router-dom'
 import { motion } from "motion/react"
+import { AppContext } from '../context/AppContext'
 
 const Header = () => {
+  const {user}  = useContext(AppContext)
 
  const navigate = useNavigate()
 
-  const handleMove = () =>{
+ const onClickHandler = () =>{
+  if(user){
     navigate('/result')
+  }else{
+    navigate("/login")
   }
+ }
+
 
   return (
     <motion.div 
@@ -18,7 +25,7 @@ const Header = () => {
     transition={{delay:1, duration: 1}}
     className='flex flex-col justify-between items-center text-cnter my-20'>
       <div className='text-stone-500 inline-flex text-center gap-2 bg-white px-6 py-1 rounded-full border border-nuetral-500'>
-        <p>Best text to image generator</p>
+        <motion.p>Best text to image generator</motion.p>
       </div>
       <motion.h1
        initial={{ opacity: 0, scale: 0.8 }}
@@ -35,7 +42,7 @@ const Header = () => {
       <motion.button 
        whileHover={{ scale: 1.1 }}
        whileTap={{ scale: 0.95 }}
-      onClick={handleMove} className='sm:text-lg text-white bg-black w-auto mt-8 px-12 py-2.5 flex item-center gap-2 rounded-full'>Generate Images</motion.button>
+      onClick={ onClickHandler } className='sm:text-lg text-white bg-black w-auto mt-8 px-12 py-2.5 flex item-center gap-2 rounded-full'>Generate Images</motion.button>
         <div className='flex flex-wrap justify-center mt-16 gap-3'>
           {Array(6).fill('').map((item,index) =>(
             <img className='rounded hover:scale-105 transition-all duration-300 cursor-pointer max-sm:w-10'

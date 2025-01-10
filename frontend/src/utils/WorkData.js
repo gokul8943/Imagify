@@ -1,14 +1,14 @@
 export const stepsData = [
     {
         title:"Describe Your vision",
-        description:"TYpe a Pharse,sentence, or paragraph that describes the image you eant to create."
+        description:"Type a Pharse,sentence, or paragraph that describes the image you eant to create."
     },
     {
         title:"Watch the Magic ",
-        description:"TYpe a Pharse,sentence, or paragraph that describes the image you eant to create."
+        description:"Our AI-provided engine will trasform your text into a high quality Unique image in seconds."
     },
     {
         title:"Download & Share",
-        description:"TYpe a Pharse,sentence, or paragraph that describes the image you eant to create."
+        description:"Intantly download your creator share it with the world directly from our platform"
     }
 ]
