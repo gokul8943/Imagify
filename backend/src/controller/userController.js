@@ -25,9 +25,28 @@ const register = async (req, res) => {
         res.status(200).json({ sucess: true, token, user: { name: user.name } })
     } catch (error) {
         console.log(error);
-        res.status(500).json({sucess:false,message:error.message})
+        res.status(500).json({ sucess: false, message: error.message })
     }
 }
 
+const loginUser = async (req, res) => {
+    try {
+        const { email, password } = req.body
+        const user = await userModel.findOne({ email })
+        if (!user) {
+            return res.status(400).json({ success: true, message: "User does not exits" })
+        }
 
- 
+        const isMatch = await bcrypt.compare(password, user.password)
+        if (isMatch) {
+            const token = jwt.sign({ id: user_id }, process.env.JWT_SECRET)
+            res.status(200).json({ sucess: true, token, user: { name: user.name } })
+        } else {
+            return res.status(400).json({ success: false, message: "Invalid Credentials" })
+        }
+
+    } catch (error) {
+        console.log(error);
+        res.json({success:false,message:error.message})
+    }
+}
