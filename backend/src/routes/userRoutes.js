@@ -1,6 +1,5 @@
 import express from 'express'
-import {register,loginUser} from '../controller/userController.js'
-
+import { register,loginUser } from '../controller/userController.js'
 const userRouter = express.Router()
 
 userRouter.post('/register',register)
