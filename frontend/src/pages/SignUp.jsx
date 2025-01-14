@@ -93,6 +93,34 @@ const SignUp = () => {
                   className="absolute inset-y-0 right-0 pr-3 flex items-center"
                 >
                   {showPassword ? (
+                    <span className="h-5 w-5 text-gray-400">&#128065;</span> 
+                  ) : (
+                    <span className="h-5 w-5 text-gray-400">&#128065;</span> 
+                  )}
+                </button>
+              </div>
+            </div>
+            <div className="relative">
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+               Confirm Password
+              </label>
+              <div className="mt-1 relative">
+                <input
+                  id="password"
+                  name="password"
+                  type={showPassword ? 'text' : 'password'}
+                  required
+                  value={formData.password}
+                  onChange={handleChange}
+                  className="block w-full px-3 py-2 border border-gray-800 rounded-full shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  placeholder="Create a password"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                >
+                  {showPassword ? (
                     <span className="h-5 w-5 text-gray-400">&#128065;</span> // Replace with an eye-off icon
                   ) : (
                     <span className="h-5 w-5 text-gray-400">&#128065;</span> // Replace with an eye icon
