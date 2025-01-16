@@ -1,4 +1,4 @@
-import userModel from "../models/userModel"
+import userModel from "../models/userModel.js"
 
 
 export const generateImage = async(req,res) =>{
@@ -26,7 +26,7 @@ export const generateImage = async(req,res) =>{
      await userModel.findByIdAndUpdate(user._id,{creditBalance:user.creditBalance - 1})
 
      res.json({success:true,message:'Image generated',creditBalance:user.creditBalance - 1, resultImage})
-     
+
    } catch (error) {
     console.log(error)
     res.json({success:false,message:error.message})
