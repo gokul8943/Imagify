@@ -50,7 +50,7 @@ export const userCredits = async(req,res) =>{
         const {userId} = req.body
 
         const user = await userModel.findById(userId)
-        res.status(200).json({success:true,credits:user.creditBalanace, user:{name:user.name}})
+        res.status(200).json({success:true,credits:user.creditBalance, user:{name:user.name}})
     } catch (error) {
         console.log((error))
         res.json({success:false,message:error.message})

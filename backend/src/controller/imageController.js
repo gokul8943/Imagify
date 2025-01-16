@@ -1,4 +1,5 @@
 import userModel from "../models/userModel.js"
+import axios from 'axios'
 
 
 export const generateImage = async(req,res) =>{
