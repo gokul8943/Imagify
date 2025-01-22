@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import backgroundImage from '../assets/backgroundImage.png';
 import { useNavigate } from 'react-router-dom'
+import { AppContext } from '../context/AppContext.jsx'
+import axios from 'axios'
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
   const [showPassword, setShowPassword] = useState(false);
-
+  const { setUser,backendUrl,setToken } = useContext( AppContext )
+  
   const navigate = useNavigate()
 
   const handleChange = (e) => {
@@ -13,10 +16,26 @@ const Login = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add form submission logic
+    try {
+      const response = await axios.post(`${backendUrl}/`, formData);
+      const { token, user } = response.data;
+
+      // Save token to localStorage
+      localStorage.setItem('token', token);
+
+      // Update context
+      setToken(token);
+      setUser(user);
+
+      // Redirect to the dashboard or home page
+      navigate('/dashboard');
+    } catch (error) {
+      setError(error.response?.data?.message || 'An error occurred during login');
+    }
   };
+
   const handleMove = () =>{
     navigate('/register')
   }
