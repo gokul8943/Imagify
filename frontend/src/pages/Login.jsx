@@ -19,9 +19,9 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${backendUrl}/`, formData);
+      const response = await axios.post(`${VITE_BACAKEND_URL}/api/user/login`, formData);
       const { token, user } = response.data;
-
+    
       // Save token to localStorage
       localStorage.setItem('token', token);
 
@@ -30,7 +30,7 @@ const Login = () => {
       setUser(user);
 
       // Redirect to the dashboard or home page
-      navigate('/dashboard');
+      navigate('/');
     } catch (error) {
       setError(error.response?.data?.message || 'An error occurred during login');
     }
