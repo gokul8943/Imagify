@@ -1,15 +1,16 @@
 import React, { useContext, useState } from 'react';
 import backgroundImage from '../assets/backgroundImage.png';
-import { useNavigate } from 'react-router-dom'
-import { AppContext } from '../context/AppContext.jsx'
-import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
+import { AppContext } from '../context/AppContext.jsx';
+import axios from 'axios';
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
   const [showPassword, setShowPassword] = useState(false);
-  const { setUser,backendUrl,setToken } = useContext( AppContext )
-  
-  const navigate = useNavigate()
+  const [error, setError] = useState(''); // State to store the error message
+  const { setUser, backendUrl, setToken } = useContext(AppContext);
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,9 +20,9 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${VITE_BACAKEND_URL}/api/user/login`, formData);
+      const response = await axios.post(`${backendUrl}/api/user/login`, formData);
       const { token, user } = response.data;
-    
+
       // Save token to localStorage
       localStorage.setItem('token', token);
 
@@ -32,34 +33,34 @@ const Login = () => {
       // Redirect to the dashboard or home page
       navigate('/');
     } catch (error) {
-      setError(error.response?.data?.message || 'An error occurred during login');
+      setError(error.response?.data?.message || 'An error occurred during login'); // Update the error message
     }
   };
 
-  const handleMove = () =>{
-    navigate('/register')
-  }
+  const handleMove = () => {
+    navigate('/register');
+  };
 
   return (
     <div
       className="flex flex-col items-center justify-center min-h-screen bg-cover bg-center relative"
       style={{ backgroundImage: `url(${backgroundImage})` }}
     >
-      {/* Backdrop */}
-      <div className="absolute inset-0 "></div>
-
-      {/* Login form container */}
+      <div className="absolute inset-0"></div>
       <div className="relative z-10 w-[90%] max-w-md m-2 px-6 py-8 bg-white rounded-xl shadow-lg sm:px-10 sm:py-12 md:mx-auto">
-        {/* Header */}
         <div className="text-center">
           <h2 className="text-3xl font-bold text-slate-900">Login </h2>
           <p className="mt-2 text-sm text-gray-600">Please sign in to your account</p>
         </div>
 
-        {/* Form */}
+        {error && (
+          <div className="mt-4 text-center text-red-500 text-sm">
+            {error} {/* Display error message */}
+          </div>
+        )}
+
         <form className="mt-6 space-y-6" onSubmit={handleSubmit}>
           <div className="space-y-4">
-            {/* Email field */}
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                 Email address
@@ -76,7 +77,6 @@ const Login = () => {
               />
             </div>
 
-            {/* Password field */}
             <div className="relative">
               <label htmlFor="password" className="block text-sm font-medium text-gray-700">
                 Password
@@ -98,16 +98,15 @@ const Login = () => {
                   className="absolute inset-y-0 right-0 pr-3 flex items-center"
                 >
                   {showPassword ? (
-                    <span className="h-5 w-5 text-gray-400">&#128065;</span> // Replace with an eye-off icon
+                    <span className="h-5 w-5 text-gray-400">&#128065;</span>
                   ) : (
-                    <span className="h-5 w-5 text-gray-400">&#128065;</span> // Replace with an eye icon
+                    <span className="h-5 w-5 text-gray-400">&#128065;</span>
                   )}
                 </button>
               </div>
             </div>
           </div>
 
-          {/* Remember me and Forgot password */}
           <div className="flex items-center justify-between">
             <div className="flex items-center">
               <input
@@ -128,7 +127,6 @@ const Login = () => {
             </div>
           </div>
 
-          {/* Submit button */}
           <div>
             <button
               type="submit"
@@ -139,13 +137,12 @@ const Login = () => {
           </div>
         </form>
 
-        {/* Sign up link */}
         <div className="mt-6 text-center">
           <p className="text-sm text-gray-600">
             Don&apos;t have an account?{' '}
-            <p onClick={handleMove} className="cursor-pointer font-medium text-blue-600 hover:text-blue-500">
+            <span onClick={handleMove} className="cursor-pointer font-medium text-blue-600 hover:text-blue-500">
               Sign up
-            </p>
+            </span>
           </p>
         </div>
       </div>
