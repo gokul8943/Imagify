@@ -1,7 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { AppContext } from '../context/AppContext'
+
 
 const Login = () => {
     const [state, setState] = useState("Login")
+    const {setShowLogin} = useContext(AppContext)
 
     useEffect(()=>{
       document.body.style.overflow = 'hidden'
@@ -11,6 +14,7 @@ const Login = () => {
       }
     },[])
      
+
     const handleMove = () =>{
         if(state === "Login"){
             setState("Sign Up")
@@ -18,6 +22,10 @@ const Login = () => {
             setState("Login")
         }
     }
+   
+ const handleClose = () =>{
+    setShowLogin(false)
+ }
 
     return (
         <div className='absolute top-0 left-0 right-0 bottom-0 z-10 backdrop-blur-sm bg-black/30 flex justify-center items-center'>
@@ -39,7 +47,7 @@ const Login = () => {
 
                 {state === "Login" ? <p className='mt-5 text-center'>Don't have an account <span className='text-blue-600 cursor-pointer' onClick={handleMove}>Sign up</span></p> :
                     <p className='mt-5 text-center'>Already have an account <span className='text-blue-600 cursor-pointer' onClick={handleMove}>Login</span></p>}
-                <span className='absolute top-5 right-5 cursor-pointer'>❌</span>
+                <span className='absolute top-5 right-5 cursor-pointer'onClick={handleClose}>❌</span>
             </form>
         </div>
     )
