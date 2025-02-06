@@ -1,7 +1,15 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const Login = () => {
     const [state, setState] = useState("Login")
+
+    useEffect(()=>{
+      document.body.style.overflow = 'hidden'
+
+      return () =>{
+        document.body.style.overflow = 'unset'
+      }
+    },[])
      
     const handleMove = () =>{
         if(state === "Login"){
