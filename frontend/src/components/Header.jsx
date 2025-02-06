@@ -23,7 +23,7 @@ const Header = () => {
     initial={{opacity:0}}
     animate={{opacity:1}}
     transition={{delay:1, duration: 1}}
-    className='flex flex-col justify-between items-center text-cnter my-20'>
+    className='flex flex-col justify-between items-center text-center my-20'>
       <div className='text-stone-500 inline-flex text-center gap-2 bg-white px-6 py-1 rounded-full border border-nuetral-500'>
         <motion.p>Best text to image generator</motion.p>
       </div>

@@ -24,7 +24,7 @@ const { user } = useContext(AppContext)
       </Link>
       <div>
         {user ?
-          <div className='flex text-cneter gap-2 sm:gap-3'>
+          <div className='flex text-center gap-2 sm:gap-3'>
             <button className='flex item-center gap-2 bg-blue-100 px-4 sm:px-6 py-1.5 sm:py-3 rounded-full hover:scale-105 transition-all duration-700'>
               <p className='text-xsd sm:text-sm font-medium text-gray-600'>Credit left :50</p>
             </button>
