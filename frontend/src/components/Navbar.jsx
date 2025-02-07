@@ -21,7 +21,7 @@ const { user,setShowLogin } = useContext(AppContext)
   return (
     <div className='flex item-center justify-between py-4'>
       <Link to='/' className='flex gap-0'>
-        <p className='text-orange-600 drop-shadow-lg font-bold'>IMA<span className='text-blue-500'>GIFY </span></p>
+        <p className='text-orange-600 drop-shadow-lg font-bold'>PIc<span className='text-blue-500'>GEn</span></p>
       </Link>
       <div>
         {user ?

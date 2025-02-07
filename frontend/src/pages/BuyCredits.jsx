@@ -22,7 +22,7 @@ const BuyCredits = () => {
           <div key={index}
             className='bg-white drop-shadow-sm border rounded-lg py-12 px-8 text-gray-600 hover:scale-105 transition-all duration-500'
           >
-            <p className='text-orange-600 drop-shadow-lg font-bold'>IMA<span className='text-blue-500'>GIFY </span></p>
+            <p className='text-orange-600 drop-shadow-lg font-bold'>PIc<span className='text-blue-500'>GEn</span></p>
             <p className='mt-3 mb-1 font-semibold'>{item.id}</p>
             <p className='text-sm'>{item.desc}</p>
             <p className='mt-6'> <span className='text-3xl font-medium'>${item.price}</span> / {item.credits}</p>

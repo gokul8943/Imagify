@@ -5,7 +5,7 @@ import { motion } from "motion/react"
 import { AppContext } from '../context/AppContext'
 
 const Header = () => {
-  const {user}  = useContext(AppContext)
+  const {user,setShowLogin}  = useContext(AppContext)
 
  const navigate = useNavigate()
 
@@ -13,7 +13,7 @@ const Header = () => {
   if(user){
     navigate('/result')
   }else{
-    navigate("/login")
+    setShowLogin(true)
   }
  }
 
@@ -22,7 +22,7 @@ const Header = () => {
     <motion.div 
     initial={{opacity:0}}
     animate={{opacity:1}}
-    transition={{delay:1, duration: 1}}
+    transition={{delay:.2, duration: 1}}
     className='flex flex-col justify-between items-center text-center my-20'>
       <div className='text-stone-500 inline-flex text-center gap-2 bg-white px-6 py-1 rounded-full border border-nuetral-500'>
         <motion.p>Best text to image generator</motion.p>
@@ -34,7 +34,7 @@ const Header = () => {
          duration: 2,
         //  repeat: Infinity,
          repeatType: "mirror",
-         delay: Math.random() * 2, 
+         delay: Math.random() * .5, 
        }}
       
       className='text-4xl font-semibold max-w-[300px] sm:text-7xl sm:max-w-[590px] mx-auto mt-10 text-center drop-shadow-md'>Turn text to <span className='text-blue-500'>image</span>,in seconds</motion.h1>
