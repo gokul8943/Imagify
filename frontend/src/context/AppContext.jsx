@@ -10,8 +10,8 @@ const AppContextProvider = (props) =>{
 
  const backendUrl = import.meta.env.VITE_BACKEND_URL
 
-
-  const value = {
+ 
+ const value = {
     user,setUser,showLogin,setShowLogin,backendUrl,token,setToken,credit,setCredit
   }
 
