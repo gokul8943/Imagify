@@ -10,8 +10,13 @@ dotenv.config()
 const PORT = process.env.PORT || 3000
 
 const app = express()
+const corsOptions = {
+    origin: ['http://localhost:5173','http://localhost:5174'],
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  };
 
-app.use(cors())
+app.use(cors(corsOptions))
 app.use(express.json())
 
 await ConnectDB()

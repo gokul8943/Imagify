@@ -1,15 +1,17 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { AppContext } from '../context/AppContext'
+import axios from 'axios'
+import { toast } from 'react-toastify'
 
 
 const Login = () => {
     const [state, setState] = useState("Login")
-    const { setShowLogin } = useContext(AppContext)
+    const { setShowLogin, backendUrl, setToken, setUser } = useContext(AppContext)
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
-  
+
 
     useEffect(() => {
         document.body.style.overflow = 'hidden'
@@ -32,14 +34,32 @@ const Login = () => {
     }
 
 
-    const onSubmitHandler = async (e) =>{
+    const onSubmitHandler = async (e) => {
         e.preventDefault()
         try {
-            if(state ===  "Login"){
-                const response = await axios()
+            if (state === "Login") {
+                const { data } = await axios.post(backendUrl + '/api/user/login', { email, password })
+                if (data.success) {
+                    setToken(data.Token)
+                    setUser(data.user)
+                    localStorage.setItem('token', data.token)
+                    setShowLogin(false)
+                } else {
+                    toast.error(data.message)
+                }
+            } else {
+                const { data } = await axios.post(backendUrl + '/api/user/register', { name, email, password })
+                if (data.success) {
+                    setToken(data.Token)
+                    setUser(data.user)
+                    localStorage.setItem('token', data.token)
+                    setShowLogin(false)
+                } else {
+                    toast.error(data.message)
+                }
             }
         } catch (error) {
-            
+            toast.error(error.message)
         }
     }
 
