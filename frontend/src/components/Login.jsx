@@ -35,14 +35,14 @@ const Login = () => {
 
 
     const onSubmitHandler = async (e) => {
-        e.preventDefault()
+        e.preventDefault ()
         try {
             if (state === "Login") {
                 const { data } = await axios.post(backendUrl + '/api/user/login', { email, password })
                 if (data.success) {
-                    setToken(data.Token)
+                    setToken(data.token)
                     setUser(data.user)
-                    localStorage.setItem('token', data.token)
+                    localStorage.getItem('token', data.token)
                     setShowLogin(false)
                 } else {
                     toast.error(data.message)
@@ -50,9 +50,9 @@ const Login = () => {
             } else {
                 const { data } = await axios.post(backendUrl+'/api/user/register', { name, email, password })      
                 if (data.success) {
-                    setToken(data.Token)
+                    setToken(data.token)
                     setUser(data.user)
-                    localStorage.setItem('token', data.token)
+                    localStorage.getItem('token', data.token)
                     setShowLogin(false)
                 } else {
                     toast.error(data.message)

@@ -12,9 +12,7 @@ const AppContextProvider = (props) => {
   const [credit, setCredit] = useState(false)
   const [showLogin, setShowLogin] = useState(false)
 
-  const backendUrl = import.meta.env.VITE_BACAKEND_URL
-  console.log('url',backendUrl);
-  
+  const backendUrl = import.meta.env.VITE_BACKEND_URL  
 
   const loadCredidtsData = async () => {
     try {
