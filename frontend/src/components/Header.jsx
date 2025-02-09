@@ -49,7 +49,7 @@ const Header = () => {
              src={cat} alt="img" key={index} width={70} />
           ))}
         </div>
-        <p className='mt-2 text-neutral-600'>Generated image from imagify</p>
+        <p className='mt-2 text-neutral-600'>Generated image from picGen</p>
     </motion.div>
   )
 }

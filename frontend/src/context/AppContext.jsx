@@ -1,15 +1,20 @@
 import axios from "axios";
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
+
+
 export const AppContext = createContext()
 
 const AppContextProvider = (props) => {
+
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(localStorage.getItem('token'))
   const [credit, setCredit] = useState(false)
   const [showLogin, setShowLogin] = useState(false)
 
-  const backendUrl = import.meta.env.VITE_BACKEND_URL
+  const backendUrl = import.meta.env.VITE_BACAKEND_URL
+  console.log('url',backendUrl);
+  
 
   const loadCredidtsData = async () => {
     try {
