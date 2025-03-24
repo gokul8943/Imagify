@@ -7,7 +7,6 @@ import BuyCredits from './pages/BuyCredits'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Login from './components/Login'
-import SignUp from './pages/SignUp'
 
 import { AppContext } from './context/AppContext'
 import { ToastContainer } from 'react-toastify';
