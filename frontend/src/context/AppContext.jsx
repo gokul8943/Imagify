@@ -14,7 +14,7 @@ const AppContextProvider = (props) => {
 
   const backendUrl = import.meta.env.VITE_BACKEND_URL  
 
-  const loadCredidtsData = async () => {
+  const loadCreditsData = async () => {
     try {
       const { data } = await axios.get(backendUrl + '/api/user/credits', { headers: { token } })
       if (data.success) {
@@ -35,12 +35,13 @@ const AppContextProvider = (props) => {
 
   useEffect(() => {
     if(token){
-      loadCredidtsData()
+      loadCreditsData()
     }
   }, [token])
+  
 
   const value = {
-    user, setUser, showLogin, setShowLogin, backendUrl, token, setToken, credit, setCredit,loadCredidtsData,logOut
+    user, setUser, showLogin, setShowLogin, backendUrl, token, setToken, credit, setCredit,loadCreditsData,logOut
   }
 
   return (
