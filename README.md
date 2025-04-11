@@ -1,4 +1,4 @@
-# IMAGIFY-AI
+# PicGEn
 
 PicGen is a full-stack web application that allows users to generate AI-powered images through text prompts and manage their credits using Razorpay payment integration.
 
