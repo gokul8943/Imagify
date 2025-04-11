@@ -19,7 +19,6 @@ const App = () => {
       <ToastContainer position='bottom-center'/>
      {showLogin &&  <Login />}
       <Routes>
-        <Route path='/register' element={<SignUp />} />
         <Route path='/' element={<Home />} />
         <Route path='/result' element={<Result />} />
         <Route path='/buy' element={<BuyCredits />} />

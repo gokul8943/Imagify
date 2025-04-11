@@ -36,38 +36,34 @@ const Login = () => {
     const onSubmitHandler = async (e) => {
         e.preventDefault();
         setIsLoading(true);
-    
+
         try {
-            let data;
+            let response;
             if (state === "Login") {
-                const response = await axios.post(backendUrl + "/api/user/login", { email, password });
-                data = response.data;
+                response = await axios.post(backendUrl + "/api/user/login", { email, password });
             } else {
-                const response = await axios.post(backendUrl + "/api/user/register", { name, email, password });
-                data = response.data;
+                response = await axios.post(backendUrl + "/api/user/register", { name, email, password });
             }
-    
-            console.log("Login response:", data);
-    
+
+            const { data } = response;
+
             if (data.success) {
                 setToken(data.token);
                 setUser(data.user);
                 localStorage.setItem("token", data.token);
                 toast.success(data.message);
-                setTimeout(() => {
-                    console.log("Closing modal...");
-                    setShowLogin(false);
-                }, 100);
+                setShowLogin(false);
             } else {
                 toast.error(data.message);
             }
         } catch (error) {
-            toast.error(error.message);
+            const errorMessage = error.response?.data?.message || error.message;
+            toast.error(errorMessage);
         } finally {
             setIsLoading(false);
         }
     };
-    
+
 
     return (
         <div className='fixed top-0 left-0 right-0 bottom-0 z-10 backdrop-blur-sm bg-black/30 flex justify-center items-center'>
@@ -85,7 +81,7 @@ const Login = () => {
                 </div>
                 <p className='text-zm text-blue-600 my-4 cursor-pointer'>forgot password?</p>
 
-                <button 
+                <button
                     disabled={isLoading}
                     className='bg-blue-600 w-full text-white py-2 rounded-full'
                 >
