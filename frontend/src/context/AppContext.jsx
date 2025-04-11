@@ -12,7 +12,7 @@ const AppContextProvider = (props) => {
   const [credit, setCredit] = useState(false)
   const [showLogin, setShowLogin] = useState(false)
 
-  const backendUrl = import.meta.env.VITE_BACKEND_URL  
+  const backendUrl = import.meta.env.VITE_BACKEND_URL
 
   const loadCreditsData = async () => {
     try {
@@ -27,21 +27,23 @@ const AppContextProvider = (props) => {
     }
   }
 
-  const logOut = () =>{
-    localStorage.removeItem('token')
-    setToken('')
-    setUser(null)
+  const logOut = () => {
+    localStorage.removeItem('token');
+    setToken('');
+    setUser(null);
+    setCredit(0);
+    toast.success('Logged out successfully');
   }
 
   useEffect(() => {
-    if(token){
+    if (token) {
       loadCreditsData()
     }
   }, [token])
-  
+
 
   const value = {
-    user, setUser, showLogin, setShowLogin, backendUrl, token, setToken, credit, setCredit,loadCreditsData,logOut
+    user, setUser, showLogin, setShowLogin, backendUrl, token, setToken, credit, setCredit, loadCreditsData, logOut
   }
 
   return (

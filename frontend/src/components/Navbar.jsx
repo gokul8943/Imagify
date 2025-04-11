@@ -1,13 +1,10 @@
 import React, { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import polo from '../assets/polo1.png'
+import { UserPen } from 'lucide-react';
 import { AppContext } from '../context/AppContext'
 
 const Navbar = () => {
-
-const { user,setShowLogin,logout,credit } = useContext(AppContext) 
-
-
+  const { user, setShowLogin, logOut, credit } = useContext(AppContext)
   const navigate = useNavigate()
 
   const handleMove = () => {
@@ -26,15 +23,15 @@ const { user,setShowLogin,logout,credit } = useContext(AppContext)
       <div>
         {user ?
           <div className='flex text-center gap-2 sm:gap-3'>
-            <button className='flex item-center gap-2 bg-blue-100 px-4 sm:px-6 py-1.5 sm:py-3 rounded-full hover:scale-105 transition-all duration-700'>
+            <button className='flex item-center gap-2 bg-blue-100 px-4 sm:px-6 py-1.5 sm:py-1 rounded-full hover:scale-105 transition-all duration-700'>
               <p className='text-xsd sm:text-sm font-medium text-gray-600'>Credit left :{credit}</p>
             </button>
             <p className='text-gray-600 max-sm:hidden pl-4 '>{user.name}</p>
             <div className='relative group'>
-              <img src={polo} alt="profile" className='w-10 drop-shadow' />
+              <UserPen size={20} className='text-gray-600' />
               <div className='absolute hidden group-hover:block top-0 right-0 z-10 text-black rounded pt-12'>
                 <ul className='list-none m-0 p-2 bg-white rounded-md border text-sm'>
-                  <li onClick={logout} className='py-1 px-2 cursor-pointer pr-10'>Logout</li>
+                  <li onClick={logOut} className='py-1 px-2 cursor-pointer pr-10 hover:bg-gray-100'>Logout</li>
                 </ul>
               </div>
             </div>
@@ -44,7 +41,6 @@ const { user,setShowLogin,logout,credit } = useContext(AppContext)
             <button onClick={handleLogin} className='bg-zinc-800 text-white px-7 py-2 sm:px-10 text-sm font-semibold rounded-full'>Login</button>
           </div>
         }
-
       </div>
     </div>
   )
